@@ -2,7 +2,9 @@ package com.example;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+
 import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -23,6 +25,14 @@ class LionTest {
         Feline mockedFeline = mock(Feline.class);
         Lion lion = new Lion("Самка", mockedFeline);
         assertFalse(lion.doesHaveMane());
+    }
+
+    @Test
+    void testLionWithInvalidSex() {
+        Feline mockedFeline = mock(Feline.class);
+        assertThrows(Exception.class, () -> {
+            new Lion("Гермафродит", mockedFeline);
+        });
     }
 
     @Test
